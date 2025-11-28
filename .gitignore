@@ -1,0 +1,12 @@
+#MacOs
+.DS_Store
+
+#VScode
+.vscode/
+
+# Node modules
+node_modules/
+
+# Temporary build or cache folders
+dist/
+build/
