@@ -1,0 +1,54 @@
+@media (max-width: 480px) {
+
+/* Banner cards */
+.banner-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px;
+    background: url(../images/banners/armsBanner.png);
+}
+
+.banner-card:before {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, .7);
+    inset: 0;
+    z-index: 1;
+}
+
+.banner-card > * {
+    z-index: 2;
+}
+
+.is-active {
+    position: absolute;
+    top: -25px;
+    left: -15px;
+    background-color: var(--primary-color);
+    padding: 5px 22px;
+}
+
+
+
+.banner-card ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 1rem;
+}
+
+.banner-card ul li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.banner-card ul li:before {
+    content: '';
+    background: var(--primary-color);
+    width: 15px;
+    height: 3px;
+}
+
+}

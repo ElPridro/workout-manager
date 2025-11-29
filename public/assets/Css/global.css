@@ -1,0 +1,78 @@
+/* Nunito */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Font awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css');
+
+:root {
+
+/* Colors */
+--primary-color: #0C8BE8;
+--font-color: #F6F6F6;
+--bg-color: #1C1C1C;
+--card-bg: #272727;
+--error-handling: #EF4444;
+
+/* Font properties */
+
+	/* Font size */
+	--font-size-h1-m: 32px;
+	--font-size-h2-m: 22px;
+	--font-size-h3-m: 20px;
+	--font-size-highlight-m: 18px;
+	--font-size-p-m: 16px;
+	
+	/* Font Family */
+	--font-family: "inter", sans-serif;
+
+	/* Font weight */
+	--font-weight-h1-m: 700;
+	
+	/* Letter Spacing */
+	--letter-spacing-h: 5%;
+
+/* Spacing */
+--button-spacing: 12px 0;
+	
+}
+
+/* type selectors */
+
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg-color);
+	color: var(--font-color);
+	font-family: var(--font-family)
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-size: var(--font-size-h1-m);
+	font-weight: var(--font-weight-h1-m);
+	text-align: center;
+	text-transform: uppercase;
+}
+
+h1 span {
+	color: var(--primary-color)
+}
+
+/* utility classes */
+
+.small-body {
+	margin: 0 10vw;
+}
+
+/* Spacing */
+
+	/* Margin top */
+	.mt-s { margin-top: .5rem; }
+	.mt-m { margin-top: 1rem; }
+	.mt-l { margin-top: 1.5rem; }
+	.mt-xl { margin-top: 3.5rem; }
+

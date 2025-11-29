@@ -5,23 +5,58 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Your Programs</title>
-        <link rel="stylesheet" href="./assets/Css/variables.css">
+        <link rel="stylesheet" href="./assets/Css/global.css">
         <link rel="stylesheet" href="./assets/Css/components.css">
     </head>
 
-    <body>
+    <body class="small-body">
         <main>
-            <section class="programs">
+        <section class="programs">
             <h1>Your <span>Programs</span></h1>
 
-            <div class="programs">
+            <div class="programs mt-xl">
 
-                <div class="program-card">
-                    <p id="is-active">Active</p>
+                <div class="program-card banner-card">
+                    <p class="is-active">Active</p>
                     <h2>Arm focused program</h2>
+
+                    <div class="card-menu-wrapper">
+                        <i class="fa-solid fa-ellipsis-vertical menu-trigger"></i>
+
+                        <div class="card-menu-dropdown">
+
+                            <button class="card-menu-item">
+                                <i class="fa-solid fa-pencil"></i>
+                                Edit
+                            </button>
+
+                            <button class="card-menu-item">
+                                <i class="fa-solid fa-star"></i>
+                                Make Active
+                            </button>
+
+                            <div class="menu-divider"></div>
+
+                            <button class="card-menu-item">
+                                <i class="fa-solid fa-trash"></i>
+                                Remove
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>4 Workouts a week</li>
+                        <li>Shoulders, Triceps, Biceps</li>
+                    </ul>
                 </div>
+
             </div>
-            </section>
+        </section>
+
         </main>
+
+        <script src="../src/pages/programPage.js" defer></script>
+        <script src="../src/components/ellipsisMenu.js" defer></script>
     </body>
 </html>
