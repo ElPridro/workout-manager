@@ -5,8 +5,15 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 20px;
+    padding: var(--card-padding-h-xl);
     background: url(../images/banners/armsBanner.png);
+}
+
+.banner-card h2 {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-l);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-h);
 }
 
 .banner-card:before {
@@ -29,7 +36,58 @@
     padding: 5px 22px;
 }
 
+.card-menu-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+}
 
+.card-menu-wrapper i {
+    color: var(--primary-color);
+}
+
+
+.card-menu-dropdown {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    background: var(--card-bg);
+    flex-direction: column;
+    gap: 1.05rem;
+    padding: var(--card-padding-m);
+}
+
+
+
+.card-menu-item {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    font-family: inherit;
+    border: none;
+    color: var(--font-color);
+    cursor: pointer;
+    font-size: var(--font-size-p-s);
+    font-weight: var(--font-weight-light);
+    gap: .8rem;
+    white-space: nowrap;
+}
+
+.card-menu-item span {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+.menu-divider {
+    width: 110%;
+    transform: translateX(-5%);
+    background-color: var(--error-handling-color);
+    height: 1px;
+}
 
 .banner-card ul {
     display: flex;

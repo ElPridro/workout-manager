@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
-import { muscleGroups } from './muscleGroups'
+import { muscleGroups } from '../data/muscleGroups.js';
 
 export const programs = [
     {
         id: uuidv4(),
         name: 'push Power',
         focusedMuscleGroups: [muscleGroups.CHEST, muscleGroups.SHOULDERS],
-        isActive: false,
+        isActive: true,
 
         workouts: [
             {
@@ -14,7 +14,7 @@ export const programs = [
                 name: 'Back & Triceps',
                 durationInHours: 1,
                 durationInMinutes: 0,
-                targetMuscleGroups: [muscleGroups.BACK, muscleGroups.TRICEPS],
+                targetMuscleGroups: [muscleGroups.BACK.id, muscleGroups.TRICEPS.id],
 
                 exercises: [
                     {
@@ -23,7 +23,7 @@ export const programs = [
                         sets: 4,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
 
                     {
@@ -32,7 +32,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
 
                     {
@@ -41,7 +41,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
 
                     {
@@ -50,7 +50,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.TRICEPS
+                        targetMuscle: muscleGroups.TRICEPS.id
                     },
 
                     {
@@ -59,7 +59,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.TRICEPS
+                        targetMuscle: muscleGroups.TRICEPS.id
                     },
                 ]
             },
@@ -69,7 +69,7 @@ export const programs = [
                 name: 'Chest & Biceps',
                 durationInHours: 1,
                 durationInMinutes: 10,
-                targetMuscleGroups: [muscleGroups.CHEST, muscleGroups.BICEPS],
+                targetMuscleGroups: [muscleGroups.CHEST.id, muscleGroups.BICEPS.id],
 
                 exercises: [
                     {
@@ -78,7 +78,7 @@ export const programs = [
                         sets: 3,
                         minReps: 6,
                         maxReps: 8,
-                        targetMuscle: muscleGroups.CHEST
+                        targetMuscle: muscleGroups.CHEST.id
                     },
 
                     {
@@ -87,7 +87,7 @@ export const programs = [
                         sets: 4,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CHEST
+                        targetMuscle: muscleGroups.CHEST.id
                     },
 
                     {
@@ -96,7 +96,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CHEST
+                        targetMuscle: muscleGroups.CHEST.id
                     },
 
                     {
@@ -105,7 +105,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.BICEPS
+                        targetMuscle: muscleGroups.BICEPS.id
                     } ,
 
                     {
@@ -114,7 +114,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.BICEPS
+                        targetMuscle: muscleGroups.BICEPS.id
                     },
 
                     {
@@ -123,7 +123,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BICEPS
+                        targetMuscle: muscleGroups.BICEPS.id
                     }
                 ]
             },
@@ -133,7 +133,7 @@ export const programs = [
                 name: 'Legs, Forearms & Abs',
                 durationInHours: 0,
                 durationInMinutes: 55,
-                targetMuscleGroups: [muscleGroups.LEGS, muscleGroups.FOREARMS, muscleGroups.CORE],
+                targetMuscleGroups: [muscleGroups.LEGS.id, muscleGroups.FOREARMS.id, muscleGroups.CORE.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -141,7 +141,7 @@ export const programs = [
                         sets: 4,
                         minReps: 10,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -149,7 +149,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -157,7 +157,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -165,7 +165,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 20,
-                        targetMuscle: muscleGroups.FOREARMS
+                        targetMuscle: muscleGroups.FOREARMS.id
                     },
                     {
                         id: uuidv4(),
@@ -173,7 +173,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 20,
-                        targetMuscle: muscleGroups.FOREARMS
+                        targetMuscle: muscleGroups.FOREARMS.id
                     },
                     {
                         id: uuidv4(),
@@ -181,7 +181,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
                     {
                         id: uuidv4(),
@@ -189,7 +189,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     }
                 ]
             },
@@ -198,7 +198,7 @@ export const programs = [
                 name: 'Back & Triceps',
                 durationInHours: 1,
                 durationInMinutes: 5,
-                targetMuscleGroups: [muscleGroups.BACK, muscleGroups.TRICEPS],
+                targetMuscleGroups: [muscleGroups.BACK.id, muscleGroups.TRICEPS.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -206,7 +206,7 @@ export const programs = [
                         sets: 4,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
                     {
                         id: uuidv4(),
@@ -214,7 +214,7 @@ export const programs = [
                         sets: 4,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
                     {
                         id: uuidv4(),
@@ -222,7 +222,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
                     {
                         id: uuidv4(),
@@ -230,7 +230,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.TRICEPS
+                        targetMuscle: muscleGroups.TRICEPS.id
                     },
                     {
                         id: uuidv4(),
@@ -238,7 +238,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 10,
-                        targetMuscle: muscleGroups.TRICEPS
+                        targetMuscle: muscleGroups.TRICEPS.id
                     }
                 ]
             }
@@ -257,7 +257,7 @@ export const programs = [
                 name: 'Leg & Core',
                 durationInHours: 0,
                 durationInMinutes: 50,
-                targetMuscleGroups: [muscleGroups.LEGS, muscleGroups.CORE],
+                targetMuscleGroups: [muscleGroups.LEGS.id, muscleGroups.CORE.id],
 
                 exercises: [
                     {
@@ -266,7 +266,7 @@ export const programs = [
                         sets: 4,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
 
                     {
@@ -275,7 +275,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
 
                     {
@@ -284,7 +284,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
 
                     {
@@ -293,7 +293,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
 
                     {
@@ -302,7 +302,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
 
                     {
@@ -311,7 +311,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
 
                     {
@@ -320,7 +320,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
                 ]
             },
@@ -330,7 +330,7 @@ export const programs = [
                 name: 'Chest, Biceps & Forearms',
                 durationInHours: 1,
                 durationInMinutes: 10,
-                targetMuscleGroups: [muscleGroups.CHEST, muscleGroups.BICEPS, muscleGroups.FOREARMS],
+                targetMuscleGroups: [muscleGroups.CHEST.id, muscleGroups.BICEPS.id, muscleGroups.FOREARMS.id],
 
                 exercises: [
                     {
@@ -339,7 +339,7 @@ export const programs = [
                         sets: 3,
                         minReps: 6,
                         maxReps: 8,
-                        targetMuscle: muscleGroups.CHEST
+                        targetMuscle: muscleGroups.CHEST.id
                     },
 
                     {
@@ -348,7 +348,7 @@ export const programs = [
                         sets: 4,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CHEST
+                        targetMuscle: muscleGroups.CHEST.id
                     },
 
                     {
@@ -357,7 +357,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CHEST
+                        targetMuscle: muscleGroups.CHEST.id
                     },
 
                     {
@@ -366,7 +366,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.BICEPS
+                        targetMuscle: muscleGroups.BICEPS.id
                     } ,
 
                     {
@@ -375,7 +375,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.BICEPS
+                        targetMuscle: muscleGroups.BICEPS.id
                     },
 
                     {
@@ -384,7 +384,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BICEPS
+                        targetMuscle: muscleGroups.BICEPS.id
                     },
 
                     {
@@ -393,7 +393,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.FOREARMS
+                        targetMuscle: muscleGroups.FOREARMS.id
                     }
                 ]
             },
@@ -403,7 +403,7 @@ export const programs = [
                 name: 'Legs & Core',
                 durationInHours: 0,
                 durationInMinutes: 55,
-                targetMuscleGroups: [muscleGroups.LEGS, muscleGroups.CORE],
+                targetMuscleGroups: [muscleGroups.LEGS.id, muscleGroups.CORE.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -411,7 +411,7 @@ export const programs = [
                         sets: 4,
                         minReps: 10,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -419,7 +419,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -427,7 +427,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -435,7 +435,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 20,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -443,7 +443,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 20,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
                     {
                         id: uuidv4(),
@@ -451,7 +451,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
                     {
                         id: uuidv4(),
@@ -459,7 +459,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     }
                 ]
             },
@@ -469,7 +469,7 @@ export const programs = [
                 name: 'Back, Triceps Shoulders',
                 durationInHours: 1,
                 durationInMinutes: 5,
-                targetMuscleGroups: [muscleGroups.BACK, muscleGroups.TRICEPS, muscleGroups.SHOULDERS],
+                targetMuscleGroups: [muscleGroups.BACK.id, muscleGroups.TRICEPS.id, muscleGroups.SHOULDERS.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -477,7 +477,7 @@ export const programs = [
                         sets: 4,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
                     {
                         id: uuidv4(),
@@ -485,7 +485,7 @@ export const programs = [
                         sets: 4,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
                     {
                         id: uuidv4(),
@@ -493,7 +493,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     },
                     {
                         id: uuidv4(),
@@ -501,7 +501,7 @@ export const programs = [
                         sets: 3,
                         minReps: 12,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.TRICEPS
+                        targetMuscle: muscleGroups.TRICEPS.id
                     },
                     {
                         id: uuidv4(),
@@ -509,7 +509,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 10,
-                        targetMuscle: muscleGroups.TRICEPS
+                        targetMuscle: muscleGroups.TRICEPS.id
                     },
 
                     {
@@ -518,7 +518,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.SHOULDERS
+                        targetMuscle: muscleGroups.SHOULDERS.id
                     },
                     
                     {
@@ -527,7 +527,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.SHOULDERS
+                        targetMuscle: muscleGroups.SHOULDERS.id
                     },
 
                     {
@@ -536,7 +536,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.SHOULDERS
+                        targetMuscle: muscleGroups.SHOULDERS.id
                     },
 
                 ]
@@ -557,11 +557,11 @@ export const programs = [
                 durationInHours: 1,
                 durationInMinutes: 0,
                 targetMuscleGroups: [
-                    muscleGroups.CHEST,
-                    muscleGroups.BACK,
-                    muscleGroups.SHOULDERS,
-                    muscleGroups.BICEPS,
-                    muscleGroups.TRICEPS
+                    muscleGroups.CHEST.id,
+                    muscleGroups.BACK.id,
+                    muscleGroups.SHOULDERS.id,
+                    muscleGroups.BICEPS.id,
+                    muscleGroups.TRICEPS.id
                 ],
                 exercises: [
                     {
@@ -570,7 +570,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CHEST
+                        targetMuscle: muscleGroups.CHEST.id
                     },
                     {
                         id: uuidv4(),
@@ -578,7 +578,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
                     {
                         id: uuidv4(),
@@ -586,7 +586,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.SHOULDERS
+                        targetMuscle: muscleGroups.SHOULDERS.id
                     },
                     {
                         id: uuidv4(),
@@ -594,7 +594,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BICEPS
+                        targetMuscle: muscleGroups.BICEPS.id
                     },
                     {
                         id: uuidv4(),
@@ -602,7 +602,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.TRICEPS
+                        targetMuscle: muscleGroups.TRICEPS.id
                     }
                 ]
             },
@@ -611,7 +611,7 @@ export const programs = [
                 name: 'Lower Body',
                 durationInHours: 1,
                 durationInMinutes: 0,
-                targetMuscleGroups: [muscleGroups.LEGS, muscleGroups.CORE],
+                targetMuscleGroups: [muscleGroups.LEGS.id, muscleGroups.CORE.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -619,7 +619,7 @@ export const programs = [
                         sets: 4,
                         minReps: 6,
                         maxReps: 10,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -627,7 +627,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -635,7 +635,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -643,7 +643,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.LEGS
+                        targetMuscle: muscleGroups.LEGS.id
                     },
                     {
                         id: uuidv4(),
@@ -651,7 +651,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CORE
+                        targetMuscle: muscleGroups.CORE.id
                     }
                 ]
             },
@@ -661,11 +661,11 @@ export const programs = [
                 durationInHours: 1,
                 durationInMinutes: 0,
                 targetMuscleGroups: [
-                    muscleGroups.CHEST,
-                    muscleGroups.BACK,
-                    muscleGroups.SHOULDERS,
-                    muscleGroups.BICEPS,
-                    muscleGroups.TRICEPS
+                    muscleGroups.CHEST.id,
+                    muscleGroups.BACK.id,
+                    muscleGroups.SHOULDERS.id,
+                    muscleGroups.BICEPS.id,
+                    muscleGroups.TRICEPS.id
                 ],
                 exercises: [
                     {
@@ -674,7 +674,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.CHEST
+                        targetMuscle: muscleGroups.CHEST.id
                     },
                     {
                         id: uuidv4(),
@@ -682,7 +682,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
                     {
                         id: uuidv4(),
@@ -690,7 +690,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.BACK
+                        targetMuscle: muscleGroups.BACK.id
                     },
                     {
                         id: uuidv4(),
@@ -698,7 +698,7 @@ export const programs = [
                         sets: 3,
                         minReps: 10,
                         maxReps: 15,
-                        targetMuscle: muscleGroups.SHOULDERS
+                        targetMuscle: muscleGroups.SHOULDERS.id
                     },
                     {
                         id: uuidv4(),
@@ -706,7 +706,7 @@ export const programs = [
                         sets: 3,
                         minReps: 8,
                         maxReps: 12,
-                        targetMuscle: muscleGroups.TRICEPS
+                        targetMuscle: muscleGroups.TRICEPS.id
                     }
                 ]
             }

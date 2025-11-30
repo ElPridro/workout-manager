@@ -11,52 +11,21 @@
 
     <body class="small-body">
         <main>
-        <section class="programs">
+        <section class="programs-section">
             <h1>Your <span>Programs</span></h1>
 
-            <div class="programs mt-xl">
+            <div class="programs mt-xl vertical-card-flex-layout" id="programs-container">
 
-                <div class="program-card banner-card">
-                    <p class="is-active">Active</p>
-                    <h2>Arm focused program</h2>
+            </div>
 
-                    <div class="card-menu-wrapper">
-                        <i class="fa-solid fa-ellipsis-vertical menu-trigger"></i>
-
-                        <div class="card-menu-dropdown">
-
-                            <button class="card-menu-item">
-                                <i class="fa-solid fa-pencil"></i>
-                                Edit
-                            </button>
-
-                            <button class="card-menu-item">
-                                <i class="fa-solid fa-star"></i>
-                                Make Active
-                            </button>
-
-                            <div class="menu-divider"></div>
-
-                            <button class="card-menu-item">
-                                <i class="fa-solid fa-trash"></i>
-                                Remove
-                            </button>
-
-                        </div>
-                    </div>
-
-                    <ul>
-                        <li>4 Workouts a week</li>
-                        <li>Shoulders, Triceps, Biceps</li>
-                    </ul>
-                </div>
-
+            <div class="button-flex-container mt-xl">
+                <button class="default-button">Add Program</button>
             </div>
         </section>
 
         </main>
 
-        <script src="../src/pages/programPage.js" defer></script>
+        <script src="../src/pages/programPage.js" defer type="module"></script>
         <script src="../src/components/ellipsisMenu.js" defer></script>
     </body>
 </html>
