@@ -12,7 +12,10 @@ function getHtmlTemplate() {
             focusedMuscleGroups.push(group.name)
         }
 
-        htmlTemplate += `<div class="program-card banner-card">
+        const banner = program.focusedMuscleGroups[0].banner;
+
+
+        htmlTemplate += `<div class="program-card banner-card" style="background-image: url()">
                                 <p class="is-active ${isActiveClass}">Active</p>
                                 <h2>${program.name}</h2>
 

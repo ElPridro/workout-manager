@@ -5,7 +5,7 @@ export const programs = [
     {
         id: uuidv4(),
         name: 'push Power',
-        focusedMuscleGroups: [muscleGroups.CHEST, muscleGroups.SHOULDERS],
+        focusedMuscleGroups: [muscleGroups.CHEST, muscleGroups.SHOULDERS, muscleGroups.BICEPS],
         isActive: true,
 
         workouts: [
