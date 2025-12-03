@@ -9,6 +9,11 @@
     background: url(../images/banners/armsBanner.png);
 }
 
+.card-link {
+    color: var(--font-color);
+    text-decoration: none;
+}
+
 .banner-card h2 {
     font-size: var(--font-size-h2);
     font-weight: var(--font-weight-l);
@@ -19,7 +24,7 @@
 .banner-card:before {
     content: '';
     position: absolute;
-    background: rgba(0, 0, 0, .7);
+    background: rgba(0, 0, 0, .8);
     inset: 0;
     z-index: 1;
 }

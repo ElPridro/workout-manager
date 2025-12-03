@@ -1,5 +1,4 @@
 import { programs } from '../data/programs.js';
-import { muscleGroups } from '../data/muscleGroups.js';
 
 function getHtmlTemplate() {
     let htmlTemplate = '';
@@ -15,7 +14,8 @@ function getHtmlTemplate() {
         const banner = program.focusedMuscleGroups[0].banner;
 
 
-        htmlTemplate += `<div class="program-card banner-card" style="background-image: url()">
+        htmlTemplate += `<a href="./workouts.html?id=${program.id}" class="card-link">
+                            <div class="program-card banner-card" style="background-image: url(${banner})">
                                 <p class="is-active ${isActiveClass}">Active</p>
                                 <h2>${program.name}</h2>
 
@@ -48,7 +48,8 @@ function getHtmlTemplate() {
                                     <li>${program.workouts.length} Workouts a week</li>
                                     <li>${focusedMuscleGroups.join(', ')}</li>
                                 </ul>
-                            </div>`
+                            </div>
+                            </a>`
     }
 
     return htmlTemplate

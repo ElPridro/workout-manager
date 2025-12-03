@@ -1,7 +1,9 @@
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 import { muscleGroups } from '../data/muscleGroups.js';
 
-export const programs = [
+function getDefaultPrograms() { 
+    
+    return [
     {
         id: uuidv4(),
         name: 'push Power',
@@ -14,8 +16,6 @@ export const programs = [
                 name: 'Back & Triceps',
                 durationInHours: 1,
                 durationInMinutes: 0,
-                targetMuscleGroups: [muscleGroups.BACK.id, muscleGroups.TRICEPS.id],
-
                 exercises: [
                     {
                         id: uuidv4(),
@@ -69,7 +69,6 @@ export const programs = [
                 name: 'Chest & Biceps',
                 durationInHours: 1,
                 durationInMinutes: 10,
-                targetMuscleGroups: [muscleGroups.CHEST.id, muscleGroups.BICEPS.id],
 
                 exercises: [
                     {
@@ -133,7 +132,6 @@ export const programs = [
                 name: 'Legs, Forearms & Abs',
                 durationInHours: 0,
                 durationInMinutes: 55,
-                targetMuscleGroups: [muscleGroups.LEGS.id, muscleGroups.FOREARMS.id, muscleGroups.CORE.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -198,7 +196,6 @@ export const programs = [
                 name: 'Back & Triceps',
                 durationInHours: 1,
                 durationInMinutes: 5,
-                targetMuscleGroups: [muscleGroups.BACK.id, muscleGroups.TRICEPS.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -247,7 +244,7 @@ export const programs = [
 
     {
         id: uuidv4(),
-        name: 'Leg day',
+        name: 'Leg Focused Program',
         focusedMuscleGroups: [muscleGroups.LEGS, muscleGroups.CORE],
         isActive: false,
 
@@ -257,8 +254,6 @@ export const programs = [
                 name: 'Leg & Core',
                 durationInHours: 0,
                 durationInMinutes: 50,
-                targetMuscleGroups: [muscleGroups.LEGS.id, muscleGroups.CORE.id],
-
                 exercises: [
                     {
                         id: uuidv4(),
@@ -330,8 +325,6 @@ export const programs = [
                 name: 'Chest, Biceps & Forearms',
                 durationInHours: 1,
                 durationInMinutes: 10,
-                targetMuscleGroups: [muscleGroups.CHEST.id, muscleGroups.BICEPS.id, muscleGroups.FOREARMS.id],
-
                 exercises: [
                     {
                         id: uuidv4(),
@@ -403,7 +396,6 @@ export const programs = [
                 name: 'Legs & Core',
                 durationInHours: 0,
                 durationInMinutes: 55,
-                targetMuscleGroups: [muscleGroups.LEGS.id, muscleGroups.CORE.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -469,7 +461,6 @@ export const programs = [
                 name: 'Back, Triceps Shoulders',
                 durationInHours: 1,
                 durationInMinutes: 5,
-                targetMuscleGroups: [muscleGroups.BACK.id, muscleGroups.TRICEPS.id, muscleGroups.SHOULDERS.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -556,13 +547,6 @@ export const programs = [
                 name: 'Upper Body A',
                 durationInHours: 1,
                 durationInMinutes: 0,
-                targetMuscleGroups: [
-                    muscleGroups.CHEST.id,
-                    muscleGroups.BACK.id,
-                    muscleGroups.SHOULDERS.id,
-                    muscleGroups.BICEPS.id,
-                    muscleGroups.TRICEPS.id
-                ],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -611,7 +595,6 @@ export const programs = [
                 name: 'Lower Body',
                 durationInHours: 1,
                 durationInMinutes: 0,
-                targetMuscleGroups: [muscleGroups.LEGS.id, muscleGroups.CORE.id],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -660,13 +643,6 @@ export const programs = [
                 name: 'Upper Body B',
                 durationInHours: 1,
                 durationInMinutes: 0,
-                targetMuscleGroups: [
-                    muscleGroups.CHEST.id,
-                    muscleGroups.BACK.id,
-                    muscleGroups.SHOULDERS.id,
-                    muscleGroups.BICEPS.id,
-                    muscleGroups.TRICEPS.id
-                ],
                 exercises: [
                     {
                         id: uuidv4(),
@@ -713,3 +689,19 @@ export const programs = [
         ]
     }
 ]
+}
+
+function loadPrograms() {
+    const savedPrograms = localStorage.getItem('programs');
+    if (savedPrograms) {
+        console.log('Loading programs from local storage....');
+        return JSON.parse(savedPrograms);
+    } else {
+        console.log('No programs found, saving new programs to local storage');
+
+        localStorage.setItem('programs', JSON.stringify(getDefaultPrograms()));
+        return JSON.parse(savedPrograms)
+    }
+}
+
+export const programs = loadPrograms();
