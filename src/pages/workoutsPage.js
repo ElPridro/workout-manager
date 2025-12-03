@@ -1,5 +1,6 @@
 import { programs } from '../data/programs.js';
 import { getMuscleById } from '../utils/finders.js';
+import { pickRandomIndex } from '../utils/randomPicker.js'
 
 function getProgramId() {
     const param = new URLSearchParams(window.location.search);
@@ -16,42 +17,46 @@ function getHtmlString() {
 
     let html = '';
     const selectedProgram = getSelectedProgram();
-    
+
         for (const workout of selectedProgram.workouts) {
             const targetMusclesId = [... new Set(workout.exercises.map(e => e.targetMuscle))]
 
             const targetMuscleNames = targetMusclesId.map(m => getMuscleById(m).name)
-            console.log(targetMuscleNames)
+
+            const bannersArray = targetMusclesId.map(m => getMuscleById(m).banner)
+            const targetBanner = bannersArray[pickRandomIndex(bannersArray)]
+            console.log(targetBanner)
+
             html += `
                     <a href="#" class="card-link">
-                        <div class="program-card banner-card">
+                        <div class="program-card banner-card" style="background-image: url(${targetBanner})">
                             <h2>${workout.name}</h2>
-                        
+
                             <div class="card-menu-wrapper">
                                 <i class="fa-solid fa-ellipsis-vertical menu-trigger"></i>
-                        
+
                                 <div class="card-menu-dropdown">
-                        
+
                                     <button class="card-menu-item">
                                         <i class="fa-solid fa-pencil"></i>
                                         <span>Edit</span>
                                     </button>
-                        
+
                                     <button class="card-menu-item">
                                         <i class="fa-solid fa-star"></i>
                                         <span>Make Active</span>
                                     </button>
-                        
+
                                     <div class="menu-divider"></div>
-                        
+
                                     <button class="card-menu-item danger">
                                         <i class="fa-solid fa-trash danger"></i>
                                         <span>Remove</span>
                                     </button>
-                        
+
                                 </div>
                             </div>
-                        
+
                             <ul>
                                 <li>${targetMuscleNames.join(', ')}</li>
                                 <li>${workout.exercises.length} Muscle Groups</li>
@@ -71,5 +76,3 @@ function render() {
 }
 
 render()
-
-console.log(document.getElementById('programs-container'))

@@ -3,6 +3,7 @@ const trigger = document.querySelectorAll('.menu-trigger');
 trigger.forEach(trigger => {
     trigger.addEventListener('click', e => {
         e.stopPropagation();
+        e.preventDefault();
 
         // Close any other menu that is appearing on the screen rn which is not a direct sibling of the ellipsis
         document.querySelectorAll('.card-menu-dropdown')
