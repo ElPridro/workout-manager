@@ -135,5 +135,7 @@ h1 span {
 		font-family: inherit;
 		text-transform: uppercase;
 		flex: 1;
+		text-align: center;
+		text-decoration: none;
 	}
 

@@ -59,7 +59,7 @@ function getHtmlString() {
 
                             <ul>
                                 <li>${targetMuscleNames.join(', ')}</li>
-                                <li>${workout.exercises.length} Muscle Groups</li>
+                                <li>${targetMuscleNames.length} Muscle Groups</li>
                                 <li>${workout.durationInHours}h ${workout.durationInMinutes}m</li>
                             </ul>
                         </div>
@@ -71,7 +71,15 @@ function getHtmlString() {
 }
 
 function render() {
-    document.getElementById('programs-container')
+
+    const heading = `${getSelectedProgram().name} <span>workouts</span>`
+
+    // Rendering heading
+    document.getElementById('workout-heading')
+    .innerHTML = heading
+
+    // Rendering workouts
+    document.getElementById('workouts-container')
     .innerHTML = getHtmlString()
 }
 

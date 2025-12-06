@@ -546,7 +546,7 @@ function getDefaultPrograms() {
                 id: uuidv4(),
                 name: 'Upper Body A',
                 durationInHours: 1,
-                durationInMinutes: 0,
+                durationInMinutes: 45,
                 exercises: [
                     {
                         id: uuidv4(),
@@ -699,8 +699,10 @@ function loadPrograms() {
     } else {
         console.log('No programs found, saving new programs to local storage');
 
-        localStorage.setItem('programs', JSON.stringify(getDefaultPrograms()));
-        return JSON.parse(savedPrograms)
+        const defaultPrograms = getDefaultPrograms()
+
+        localStorage.setItem('programs', JSON.stringify(defaultPrograms));
+        return defaultPrograms
     }
 }
 
