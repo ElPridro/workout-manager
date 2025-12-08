@@ -1,4 +1,4 @@
-import { programs } from '../data/programs.js';
+import { programs } from '../storage/storage.js';
 
 function getHtmlTemplate() {
     let htmlTemplate = '';

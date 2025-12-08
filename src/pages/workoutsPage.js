@@ -1,4 +1,4 @@
-import { programs } from '../data/programs.js';
+import { programs } from '../storage/storage.js';
 import { getMuscleById } from '../utils/finders.js';
 import { pickRandomIndex } from '../utils/randomPicker.js'
 
