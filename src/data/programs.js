@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 import { muscleGroups } from '../data/muscleGroups.js';
 
-function getDefaultPrograms() { 
+export function getDefaultPrograms() { 
     
     return [
     {
@@ -690,4 +690,3 @@ function getDefaultPrograms() {
     }
 ]
 }
-

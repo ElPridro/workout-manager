@@ -1,3 +1,5 @@
+import { getDefaultPrograms } from '../data/programs.js'
+
 function loadPrograms() {
     const savedPrograms = localStorage.getItem('programs');
     if (savedPrograms) {

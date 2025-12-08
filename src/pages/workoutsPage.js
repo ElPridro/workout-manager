@@ -25,7 +25,6 @@ function getHtmlString() {
 
             const bannersArray = targetMusclesId.map(m => getMuscleById(m).banner)
             const targetBanner = bannersArray[pickRandomIndex(bannersArray)]
-            console.log(targetBanner)
 
             html += `
                     <a href="#" class="card-link">
@@ -40,11 +39,6 @@ function getHtmlString() {
                                     <button class="card-menu-item">
                                         <i class="fa-solid fa-pencil"></i>
                                         <span>Edit</span>
-                                    </button>
-
-                                    <button class="card-menu-item">
-                                        <i class="fa-solid fa-star"></i>
-                                        <span>Make Active</span>
                                     </button>
 
                                     <div class="menu-divider"></div>
