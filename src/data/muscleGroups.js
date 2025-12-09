@@ -6,7 +6,7 @@ export const muscleGroups = {
             name: 'Chest', 
             children: [],
             banner: './assets/images/banners/chestBanner.png',
-            icon: './assets/images/icons/chestIcon.png'
+            icon: './assets/images/icons/chestIcon.svg'
             },
 
     BACK: 
@@ -15,7 +15,7 @@ export const muscleGroups = {
             name: 'Back', 
             children: [],
             banner: './assets/images/banners/backBanner.png',
-            icon: './assets/images/icons/backIcon.png'
+            icon: './assets/images/icons/backIcon.svg'
             },
     
     SHOULDERS: 
@@ -24,7 +24,7 @@ export const muscleGroups = {
             name: 'Shoulders', 
             children: [], 
             banner: './assets/images/banners/shouldersBanner.png',
-            icon: './assets/images/icons/shoulderIcon.png'
+            icon: './assets/images/icons/shoulderIcon.svg'
             },
 
     BICEPS: 
@@ -33,7 +33,7 @@ export const muscleGroups = {
             name: 'Biceps', 
             children: [],
             banner: './assets/images/banners/armsBanner.png',
-            icon: './assets/images/icons/bicepIcon.png' 
+            icon: './assets/images/icons/bicepIcon.svg' 
             },
 
     TRICEPS: 
@@ -42,7 +42,7 @@ export const muscleGroups = {
             name: 'Triceps', 
             children: [],
             banner: './assets/images/banners/armsBanner.png',
-            icon: './assets/images/icons/tricepIcon.png' 
+            icon: './assets/images/icons/tricepIcon.svg' 
             },
 
     FOREARMS: 
@@ -51,7 +51,7 @@ export const muscleGroups = {
             name: 'Forearms',
             children: [],
             banner: './assets/images/banners/armsBanner.png',
-            icon: './assets/images/icons/forearmIcon.png'
+            icon: './assets/images/icons/forearmIcon.svg'
             },
 
     // Core
@@ -61,7 +61,7 @@ export const muscleGroups = {
             name: 'Core',
             children: [],
             banner: './assets/images/banners/coreBanner.png',
-            icon: './assets/images/icons/coreIcon.png'},
+            icon: './assets/images/icons/coreIcon.svg'},
 
     // Lower body
     LEGS: 
@@ -70,7 +70,7 @@ export const muscleGroups = {
             name: 'Legs', 
             children: [],
             banner: './assets/images/banners/legsBanner.png',
-            icon: './assets/images/icons/legIcon.png'
+            icon: './assets/images/icons/legIcon.svg'
         },
 
     // Full body
@@ -80,6 +80,6 @@ export const muscleGroups = {
             name: 'Full Body', 
             children: [],
             banner: './assets/images/banners/fullBodyBanner.png',
-            icon: './assets/images/icons/fullBodyIcon.png',
+            icon: './assets/images/icons/fullBodyIcon.svg',
         }
 };

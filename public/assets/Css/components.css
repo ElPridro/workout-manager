@@ -1,3 +1,7 @@
+body {
+    visibility: hidden;
+}
+
 @media (max-width: 480px) {
 
 /* Banner cards */
@@ -117,4 +121,60 @@
     height: 3px;
 }
 
+/* Icon card  */
+
+.icon-card {
+	display: flex;
+	align-items: center;
+	background: var(--card-bg);
+	position: relative;
+	background-image: url('../images/backgrounds/icon-card-background.png');
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: contain;
+	padding-left: 25px;
+	gap: var(--spacing-l);
+	padding: var(--card-padding-h-m);
 }
+
+.icon-card h2 {
+	font-size: var(--font-size-h3);
+	margin: 0;
+}
+
+.exercise-details {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-s)
+}
+
+.icon-card img {
+	width: 65px;
+	border-right: 1px solid var(--primary-color);
+	padding-right: var(--spacing-m);
+}
+
+.icon-card ul{
+	list-style: none;
+}
+
+.icon-card ul li {
+	font-weight: var(--font-weight-s);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-m);
+}
+
+.icon-card ul li span{
+	opacity: .7;
+}
+
+.icon-card ul li:before {
+	content: '';
+	width: 11px;
+	height: 2px;
+	background: var(--primary-color);
+}
+
+}
+

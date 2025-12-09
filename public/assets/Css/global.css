@@ -40,6 +40,13 @@
 
 /* Spacing */
 
+	/* Spacing */
+	--spacing-xs: .25rem;
+	--spacing-s: .5rem;
+	--spacing-m: 1rem;
+	--spacing-l: 2rem;
+	--spacing-xl: 4rem;
+
 	/* Button Padding */
 	--button-padding-s: 12px 0;
 	--button-padding-m: 12px 0;
@@ -57,6 +64,7 @@
 	--card-padding-h-l: 12px 24px;
 	--card-padding-h-xl: 16px 32px;
 
+
 	
 }
 
@@ -67,7 +75,8 @@ body {
 	padding: 5dvh 0;
 	background: var(--bg-color);
 	color: var(--font-color);
-	font-family: var(--font-family)
+	font-family: var(--font-family);
+	visibility: hidden;
 }
 
 ul {
@@ -105,10 +114,11 @@ h1 span {
 /* Spacing */
 
 	/* Margin top */
-	.mt-s { margin-top: .5rem; }
-	.mt-m { margin-top: 1rem; }
-	.mt-l { margin-top: 1.5rem; }
-	.mt-xl { margin-top: 3.5rem; }
+	.mt-s { margin-top: var(--spacing-xs); }
+	.mt-s { margin-top: var(--spacing-s); }
+	.mt-m { margin-top: var(--spacing-m); }
+	.mt-l { margin-top: var(--spacing-l); }
+	.mt-xl { margin-top: var(--spacing-xl); }
 
 /* Coloring */
 .danger {
@@ -139,3 +149,8 @@ h1 span {
 		text-decoration: none;
 	}
 
+@media (max-width: 450px) {
+	body {
+   	 visibility: visible;
+	}
+}
