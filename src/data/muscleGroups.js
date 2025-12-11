@@ -24,7 +24,7 @@ export const muscleGroups = {
             name: 'Shoulders', 
             children: [], 
             banner: './assets/images/banners/shouldersBanner.png',
-            icon: './assets/images/icons/shoulderIcon.svg'
+            icon: './assets/images/icons/shouldersIcon.svg'
             },
 
     BICEPS: 

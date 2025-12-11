@@ -13,7 +13,7 @@
 --card-bg: #272727;
 --error-handling-color: #EF4444;
 
-/* Font properties */
+/* Typography */
 
 	/* Font size */
 	--font-size-h1: 32px;
@@ -34,6 +34,12 @@
 	/* Letter Spacing */
 	--letter-spacing-h: §px;
 	--letter-spacing-btn: 2px;
+
+	--line-height-s: 1.2;
+	--line-height-m: 1.5;
+	--line-height-l: 1.7;
+	
+
 
 	/* Text shadow */
 	--text-shadow-s: 0 0 4px rgba(0, 0, 0, .3);
@@ -147,6 +153,7 @@ h1 span {
 		flex: 1;
 		text-align: center;
 		text-decoration: none;
+		cursor: pointer;
 	}
 
 @media (max-width: 450px) {

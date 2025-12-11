@@ -27,7 +27,7 @@ function getHtmlString() {
             const targetBanner = bannersArray[pickRandomIndex(bannersArray)]
 
             html += `
-                    <a href="#" class="card-link">
+                    <a href="./exercises.html?id=${workout.id}" class="card-link">
                         <div class="program-card banner-card" style="background-image: url(${targetBanner})">
                             <h2>${workout.name}</h2>
 
