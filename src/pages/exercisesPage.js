@@ -75,9 +75,15 @@ function renderExercises() {
  
     const html = getHtmlString();
 
+    // Render page title
+    document.getElementById('exercises-heading')
+    .innerHTML = `${getWorkoutById().name} <span>exercises</span>`
+    
+    // Render exercises
     document.querySelector('.exercises-wrapper')
     .innerHTML = html
 
+    // Render back button
     document.querySelector('.back-to-workout')
     .innerHTML = `<a href="${document.referrer}" class="default-button">Back to workouts</a>`
 }

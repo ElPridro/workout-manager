@@ -38,7 +38,7 @@
 	--line-height-s: 1.2;
 	--line-height-m: 1.5;
 	--line-height-l: 1.7;
-	
+
 
 
 	/* Text shadow */
@@ -94,6 +94,7 @@ h1 {
 	font-size: var(--font-size-h1);
 	font-weight: var(--font-weight-l);
 	letter-spacing: var(--letter-spacing-h);
+	line-height: var(--line-height-m);
 	text-align: center;
 	text-transform: uppercase;
 }
