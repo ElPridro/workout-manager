@@ -53,6 +53,7 @@
 	--space-5: 24px;
 	--space-6: 32px;
 	--space-7: 48px;
+	--space-8: 52px;
 
 	/* Border radius */
 	--radius-s: 15px;
@@ -134,6 +135,7 @@ h1 span {
 		letter-spacing: var(--letter-spacing-btn);
 		font-size: var(--font-size-p-l);
 		text-shadow: var(--text-shadow-s);
+		border-radius: var(--radius-m);
 		border: none;
 		font-family: inherit;
 		text-transform: uppercase;

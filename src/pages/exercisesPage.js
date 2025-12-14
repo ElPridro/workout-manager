@@ -45,7 +45,7 @@ function getHtmlString() {
                 
                         <div class="card-menu-dropdown">
                 
-                            <button class="card-menu-item">
+                            <button class="card-menu-item edit-exercise">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span>Edit</span>
                             </button>
