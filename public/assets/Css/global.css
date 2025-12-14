@@ -32,14 +32,13 @@
 	--font-weight-l: 700;
 	
 	/* Letter Spacing */
-	--letter-spacing-h: §px;
+	--letter-spacing-h: 1px;
 	--letter-spacing-btn: 2px;
 
+	/* Line height */
 	--line-height-s: 1.2;
 	--line-height-m: 1.5;
 	--line-height-l: 1.7;
-
-
 
 	/* Text shadow */
 	--text-shadow-s: 0 0 4px rgba(0, 0, 0, .3);
@@ -47,31 +46,18 @@
 /* Spacing */
 
 	/* Spacing */
-	--spacing-xs: .25rem;
-	--spacing-s: .5rem;
-	--spacing-m: 1rem;
-	--spacing-l: 2rem;
-	--spacing-xl: 4rem;
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+	--space-7: 48px;
 
-	/* Button Padding */
-	--button-padding-s: 12px 0;
-	--button-padding-m: 12px 0;
-	--button-padding-l: 12px 0;
-
-	/* Card padding horizontal & vertical */
-	--card-padding-s: 12px;
-	--card-padding-m: 16px;
-	--card-padding-l: 24px;
-	--card-padding-xl: 32px;
-
-	/* Cards padding Horizontal*/
-	--card-padding-h-s: 6px 12px;
-	--card-padding-h-m: 8px 16px;
-	--card-padding-h-l: 12px 24px;
-	--card-padding-h-xl: 16px 32px;
-
-
-	
+	/* Border radius */
+	--radius-s: 15px;
+	--radius-m: 25px;
+	--radius-l: 35px;
 }
 
 /* type selectors */
@@ -121,11 +107,11 @@ h1 span {
 /* Spacing */
 
 	/* Margin top */
-	.mt-s { margin-top: var(--spacing-xs); }
-	.mt-s { margin-top: var(--spacing-s); }
-	.mt-m { margin-top: var(--spacing-m); }
-	.mt-l { margin-top: var(--spacing-l); }
-	.mt-xl { margin-top: var(--spacing-xl); }
+	.mt-xs { margin-top: var(--space-2); }
+	.mt-s { margin-top: var(--space-3); }
+	.mt-m { margin-top: var(--space-4); }
+	.mt-l { margin-top: var(--space-5); }
+	.mt-xl { margin-top: var(--space-7); }
 
 /* Coloring */
 .danger {
@@ -143,7 +129,7 @@ h1 span {
 	.default-button {
 		background: var(--primary-color);
 		font-weight: var(--font-weight-m);
-		padding: var(--button-padding-l);
+		padding: var(--space-4);
 		color: var(--font-color);
 		letter-spacing: var(--letter-spacing-btn);
 		font-size: var(--font-size-p-l);
