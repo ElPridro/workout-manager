@@ -45,14 +45,14 @@ function getHtmlString() {
                 
                         <div class="card-menu-dropdown">
                 
-                            <button class="card-menu-item edit-exercise">
+                            <button class="card-menu-item">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span>Edit</span>
                             </button>
                 
                             <div class="menu-divider"></div>
                 
-                            <button class="card-menu-item danger">
+                            <button class="card-menu-item danger remove-exercise">
                                 <i class="fa-solid fa-trash danger"></i>
                                 <span>Remove</span>
                             </button>
@@ -77,7 +77,7 @@ function renderExercises() {
 
     // Render page title
     document.getElementById('exercises-heading')
-    .innerHTML = `${getWorkoutById().name} <span>exercises</span>`
+    .innerHTML = `${getWorkoutById().name} <span class="blue-span">exercises</span>`
     
     // Render exercises
     document.querySelector('.exercises-wrapper')

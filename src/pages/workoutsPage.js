@@ -66,7 +66,7 @@ function getHtmlString() {
 
 function render() {
 
-    const heading = `${getSelectedProgram().name} <span>workouts</span>`
+    const heading = `${getSelectedProgram().name} <span class="blue-span">workouts</span>`
 
     // Rendering heading
     document.getElementById('workout-heading')
