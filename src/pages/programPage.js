@@ -1,4 +1,4 @@
-import { programs } from '../storage/storage.js';
+const programs = JSON.parse(localStorage.getItem('programs'))
 
 function getHtmlTemplate() {
     let htmlTemplate = '';
@@ -55,11 +55,11 @@ function getHtmlTemplate() {
     return htmlTemplate
 }
 
-function render() {
+export function renderPrograms() {
     const html = getHtmlTemplate();
     const programsContainer = document.getElementById('programs-container');
     
     programsContainer.innerHTML = html
 }
 
-render();
+renderPrograms();

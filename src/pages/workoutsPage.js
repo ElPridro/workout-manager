@@ -1,4 +1,4 @@
-import { programs } from '../storage/storage.js';
+const programs = JSON.parse(localStorage.getItem('programs'))
 import { getMuscleById } from '../utils/finders.js';
 import { pickRandomIndex } from '../utils/randomPicker.js'
 
@@ -78,3 +78,4 @@ function render() {
 }
 
 render()
+

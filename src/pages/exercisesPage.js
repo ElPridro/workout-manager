@@ -1,4 +1,4 @@
-import { programs } from '../storage/storage.js';
+const programs = JSON.parse(localStorage.getItem('programs'))
 import { muscleGroups } from '../data/muscleGroups.js';
 
 function getWorkoutId() {
@@ -35,7 +35,7 @@ function getHtmlString() {
         .find(group => group.id === ex.targetMuscle).icon;
 
         html += `
-            <div class="icon-card">
+            <div class="icon-card" data-exercise-id="${ex.id}">
                 <img src="${targetIcon}" alt="icon showing target muscle">
                 <div class="exercise-details">
                     <h2>${ex.name}</h2>
@@ -71,7 +71,7 @@ function getHtmlString() {
     return html
 }
 
-function renderExercises() {
+export function renderExercises() {
  
     const html = getHtmlString();
 
