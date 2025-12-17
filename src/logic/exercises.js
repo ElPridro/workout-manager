@@ -1,5 +1,6 @@
 import { openConfirmationModal } from '../ui/components/openConfirmationModal.js';
 import { renderExercises } from '../pages/exercisesPage.js';
+import { displayTopError } from '../ui/components/displayTopError.js';
 
 document.addEventListener('click', e => {
     const removeExerciseBtn = e.target.closest('.remove-exercise');
@@ -27,7 +28,7 @@ function handleExerciseRemoval(id) {
 
     const isLastWorkout = parentWorkout.exercises.length < 2
     if (isLastWorkout) {
-        console.log('It is not possible to remove the last workout (An error message will replcae this later on!)')
+        displayTopError('At least one exercise is required.')
         return
     }
 

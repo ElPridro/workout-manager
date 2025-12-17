@@ -248,3 +248,15 @@
     border: 2px solid var(--error-handling-color);
     color: var(--error-handling-color);
 }
+
+/* Error handling  */
+#top-error-message {
+    background: var(--error-handling-color);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    white-space: nowrap;
+    text-align: center;
+    padding: var(--space-1) var(--space-4)
+}

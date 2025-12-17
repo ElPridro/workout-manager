@@ -11,7 +11,7 @@
 --font-color: #F6F6F6;
 --bg-color: #1C1C1C;
 --card-bg: #272727;
---error-handling-color: #EF4444;
+--error-handling-color: #bd2727;
 --overlay-bg: rgba(0, 0, 0, .75);
 
 /* Typography */
@@ -94,6 +94,10 @@ h1 {
 /* utility classes */
 .hidden {
 	display: none !important;
+}
+
+.block {
+	display: block !important;
 }
 
 .small-body {
