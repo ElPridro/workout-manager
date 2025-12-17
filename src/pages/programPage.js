@@ -27,7 +27,7 @@ function getHtmlTemplate() {
                                 <div class="card-menu-wrapper">
                                     <i class="fa-solid fa-ellipsis-vertical menu-trigger"></i>
 
-                                    <div class="card-menu-dropdown">
+                                    <div class="card-menu-dropdown light">
 
                                         <button class="card-menu-item">
                                             <i class="fa-solid fa-pencil"></i>
