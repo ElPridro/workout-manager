@@ -2,28 +2,37 @@ import { openConfirmationModal } from '../ui/components/openConfirmationModal.js
 import { renderExercises } from '../pages/exercisesPage.js';
 
 document.addEventListener('click', e => {
-    const editExerciseBtn = e.target.closest('.remove-exercise');
+    const removeExerciseBtn = e.target.closest('.remove-exercise');
 
-    if (editExerciseBtn) {
-        const exerciseCard = editExerciseBtn.closest('.icon-card');
+        if (!removeExerciseBtn) return 
+
+        const exerciseCard = removeExerciseBtn.closest('.icon-card');
         const exerciseId = exerciseCard.dataset.exerciseId;
+
         openConfirmationModal({
-            title: 'Exercise',
+            title: 'exercise',
             description: 'This action will permanently delete the exercise. You will not be able to restore it.',
-            onclick: () => {
-
-                const isLastWorkout = checkIfLast(getWorkoutByExerciseId(exerciseId).exercises)
-                if (isLastWorkout) { 
-                    console.log('User is trying to delete last exercise')
-                    alert('You cannot delete the last exercise');
-                    return
-                }
-
-                removeExercise(exerciseId);
-            }
+            onclick: () => handleExerciseRemoval(exerciseId)
         })
-    }
+
 })
+
+function handleExerciseRemoval(id) {
+    const parentWorkout = getWorkoutByExerciseId(id);
+
+    if (!parentWorkout) {
+        console.log(`invariant violation: workout not found for exercise ${id}`);
+        return
+    }
+
+    const isLastWorkout = parentWorkout.exercises.length < 2
+    if (isLastWorkout) {
+        console.log('It is not possible to remove the last workout (An error message will replcae this later on!)')
+        return
+    }
+
+    removeExercise(id)
+}
 
 function getWorkoutByExerciseId(id) {
     const programs = JSON.parse(localStorage.getItem('programs'))
@@ -39,14 +48,6 @@ function getWorkoutByExerciseId(id) {
         }
     }
 
-}
-
-function checkIfLast(array) {
-    if (array.length < 2) {
-        return true
-    }
-
-    return false;
 }
 
 
