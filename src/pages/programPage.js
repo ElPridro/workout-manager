@@ -1,8 +1,13 @@
-const programs = JSON.parse(localStorage.getItem('programs'))
+import { programs } from '../storage/storage.js';
+
 
 function getHtmlTemplate() {
     let htmlTemplate = '';
-    for (const program of programs) {
+
+    const persistedPrograms = JSON.parse(localStorage.getItem('programs'));
+    const currentProgram = persistedPrograms ? persistedPrograms : programs;
+
+    for (const program of currentProgram) {
 
         const isActiveClass = program.isActive ? '' : 'hidden' 
 

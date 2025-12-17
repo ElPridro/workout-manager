@@ -1,5 +1,6 @@
-const programs = JSON.parse(localStorage.getItem('programs'))
 import { muscleGroups } from '../data/muscleGroups.js';
+import { programs } from '../storage/storage.js';
+
 
 function getWorkoutId() {
     const param = new URLSearchParams( window.location.search );
@@ -9,8 +10,10 @@ function getWorkoutId() {
 
 function getWorkoutById() {
     const workoutId = getWorkoutId();
+    const persistedPrograms = JSON.parse(localStorage.getItem('programs'));
+    const currentProgram = persistedPrograms ? persistedPrograms : programs;
 
-    for (const program of programs) {
+    for (const program of currentProgram) {
 
         for (const workout of program.workouts) {
 
@@ -72,7 +75,6 @@ function getHtmlString() {
 }
 
 export function renderExercises() {
- 
     const html = getHtmlString();
 
     // Render page title
@@ -90,3 +92,4 @@ export function renderExercises() {
 
 
 renderExercises()
+

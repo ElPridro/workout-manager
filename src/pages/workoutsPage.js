@@ -1,6 +1,7 @@
-const programs = JSON.parse(localStorage.getItem('programs'))
 import { getMuscleById } from '../utils/finders.js';
 import { pickRandomIndex } from '../utils/randomPicker.js'
+import { programs } from '../storage/storage.js';
+
 
 function getProgramId() {
     const param = new URLSearchParams(window.location.search);
@@ -9,7 +10,10 @@ function getProgramId() {
 
 function getSelectedProgram() {
     const programId = getProgramId();
-    const targetProgram = programs.find(program => program.id === programId)
+    const persistedPrograms = JSON.parse(localStorage.getItem('programs'))
+
+    const currentProgram = persistedPrograms ? persistedPrograms : programs
+    const targetProgram = currentProgram.find(program => program.id === programId)
     return targetProgram
 }
 
