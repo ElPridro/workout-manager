@@ -11,22 +11,46 @@ document.addEventListener('click', e => {
             title: 'Exercise',
             description: 'This action will permanently delete the exercise. You will not be able to restore it.',
             onclick: () => {
+
+                const isLastWorkout = checkIfLast(getWorkoutByExerciseId(exerciseId).exercises)
+                if (isLastWorkout) { 
+                    console.log('User is trying to delete last exercise')
+                    alert('You cannot delete the last exercise');
+                    return
+                }
+
                 removeExercise(exerciseId);
             }
         })
     }
 })
 
-function checkIfLast(type) {
-    if (type.length < 1) {
-        return false
+function getWorkoutByExerciseId(id) {
+    const programs = JSON.parse(localStorage.getItem('programs'))
+
+
+    for (const program of programs) {
+        for (const workout of program.workouts) {
+            const foundWorkout = workout.exercises.some(exercise => exercise.id === id);
+
+            if (foundWorkout) {
+                return workout;
+            }
+        }
     }
 
-    return true;
+}
+
+function checkIfLast(array) {
+    if (array.length < 2) {
+        return true
+    }
+
+    return false;
 }
 
 
-// Removes an exercise element from the exercises array
+// filters an exercise element from the exercises array
 function filterExercise(exercisesArray, exerciseId) {
     return exercisesArray.filter(exercise => exercise.id !== exerciseId)
 }
@@ -48,10 +72,10 @@ function updateWorkouts(workoutsArray, exerciseId) {
 
 // Updates the workouts array in a single program using updateWorkouts()
 function updateProgram(programObject, exerciseId) {
-    return {
-        ...programObject, 
-        workouts: updateWorkouts(programObject.workouts, exerciseId)
-    }
+        return {
+            ...programObject, 
+            workouts: updateWorkouts(programObject.workouts, exerciseId)
+        }
 }
 
 
