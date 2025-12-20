@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="./assets/Css/components.css">
 
         <script src="../src/pages/exercisesPage.js" defer type="module"></script>
-        <script src="../src/logic/exercises.js" defer type="module"></script>
+        <script src="../src/logic/exercises/exercises.js" defer type="module"></script>
         <script src="../src/ui/components/ellipsisMenu.js" defer></script>
     </head>
 
@@ -28,6 +28,104 @@
                     <button class="confirm-modal-cancel-button">Cancel</button>
                     <button class="confirm-modal-remove-button">Remove</button>
                 </div>
+            </div>
+        </dialog>
+
+        <!-- Exercise editor -->
+         <dialog class="exercise-editor" open>
+
+            <!-- Content -->
+            <div class="exercise-editor-content">
+
+                <!-- Title -->
+                <h2 class="exercise-editor-title">Edit <span>Exercise</span></h2>
+
+                <!-- First block -->
+                <div class="exercise-editor-first-block">
+
+                    <!-- Exercise name -->
+                    <label>
+                        Exercise Name
+                        <input 
+                        type="text"
+                        name="exercise-name"
+                        id="exercise-name"
+                        required
+                        minlength="2"
+                        maxlength="20"
+                        autocomplete="off"
+                        >
+                    </label>
+
+                    <!-- Muscle group selection -->
+                    <div class="exercise-editor-muscle-group-selection">
+                        <button class="exercise-editor-muscle-group-selection-trigger">
+                            <span class="exercise-editor-muscle-group-selection-value">Chest</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <div class="exercise-editor-muscle-group-selection-dropdown">
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="chest" type="button">Chest</button>
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="back" type="button">Back</button>
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="shoulders" type="button">Shoulders</button>
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="biceps" type="button">biceps</button>
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="triceps" type="button">Triceps</button>
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="forearms" type="button">Forearms</button>
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="core" type="button">Core</button>
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="legs" type="button">Legs</button>
+                            <button class="exercise-editor-muscle-group-selection-option" data-value="full-body" type="button">Full Body</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second block -->
+                <div class="exercise-editor-second-block">
+
+                    <!-- Sets amount -->
+                    <label>
+                        Sets
+                        <input
+                        type="number"
+                        id="sets"
+                        name="sets"
+                        step="1"
+                        inputMode="numeric"
+                        required
+                        >
+                    </label>
+
+                    <!-- Minimal reps amount -->
+                    <label>
+                        Min. reps
+                        <input
+                        type="number"
+                        id="min-reps"
+                        name="min-reps"
+                        min="1"
+                        max="30"
+                        step="1"
+                        inputmode="numeric"
+                        required
+                        >
+                    </label>
+
+                    <!-- Maximal reps amount -->
+                    <label>
+                        Max. reps
+                        <input
+                        type="number"
+                        id="min-reps"
+                        name="min-reps"
+                        min="1"
+                        max="30"
+                        step="1"
+                        inputmode="numeric"
+                        required
+                        >
+                    </label>
+                </div>
+
+                <button id="exercise-editor-save-button" type="button">Save</button>
             </div>
         </dialog>
 

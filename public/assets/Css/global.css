@@ -44,6 +44,12 @@
 	/* Text shadow */
 	--text-shadow-s: 0 0 4px rgba(0, 0, 0, .3);
 
+
+/* Effects */
+--box-shadow-s: 0 0 4px rgba(0, 0, 0, .3);
+--box-shadow-m: 2px 2px 8px rgba(0, 0, 0, .3);
+--box-shadow-l: 6px 6px 12px rgba(0, 0, 0, .3);
+
 /* Spacing */
 
 	/* Spacing */
