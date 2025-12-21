@@ -11,6 +11,7 @@
 
         <script src="../src/pages/exercisesPage.js" defer type="module"></script>
         <script src="../src/logic/exercises/exercises.js" defer type="module"></script>
+        <script src="../src/ui/components/exerciseEditor.js" defer></script>
         <script src="../src/ui/components/ellipsisMenu.js" defer></script>
     </head>
 
@@ -32,16 +33,16 @@
         </dialog>
 
         <!-- Exercise editor -->
-         <dialog class="exercise-editor" open>
+         <dialog class="exercise-editor">
 
             <!-- Content -->
-            <div class="exercise-editor-content">
+            <div class="editor-content">
 
                 <!-- Title -->
-                <h2 class="exercise-editor-title">Edit <span>Exercise</span></h2>
+                <h2 class="editor-title">Edit <span class="blue-span">Exercise</span></h2>
 
                 <!-- First block -->
-                <div class="exercise-editor-first-block">
+                <div class="first-block">
 
                     <!-- Exercise name -->
                     <label>
@@ -58,28 +59,31 @@
                     </label>
 
                     <!-- Muscle group selection -->
-                    <div class="exercise-editor-muscle-group-selection">
-                        <button class="exercise-editor-muscle-group-selection-trigger">
-                            <span class="exercise-editor-muscle-group-selection-value">Chest</span>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
+                    <div class="muscle-group-select">
+                        <div class="muscle-group-header">
+                            <span>Muscle Group</span>
+                            <button class="muscle-group-trigger">
+                                <span class="muscle-group-value">Chest</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                        </div>
 
-                        <div class="exercise-editor-muscle-group-selection-dropdown">
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="chest" type="button">Chest</button>
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="back" type="button">Back</button>
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="shoulders" type="button">Shoulders</button>
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="biceps" type="button">biceps</button>
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="triceps" type="button">Triceps</button>
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="forearms" type="button">Forearms</button>
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="core" type="button">Core</button>
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="legs" type="button">Legs</button>
-                            <button class="exercise-editor-muscle-group-selection-option" data-value="full-body" type="button">Full Body</button>
+                        <div class="muscle-group-dropdown">
+                            <button class="muscle-group-option" data-value="chest" type="button">Chest</button>
+                            <button class="muscle-group-option" data-value="back" type="button">Back</button>
+                            <button class="muscle-group-option" data-value="shoulders" type="button">Shoulders</button>
+                            <button class="muscle-group-option" data-value="biceps" type="button">biceps</button>
+                            <button class="muscle-group-option" data-value="triceps" type="button">Triceps</button>
+                            <button class="muscle-group-option" data-value="forearms" type="button">Forearms</button>
+                            <button class="muscle-group-option" data-value="core" type="button">Core</button>
+                            <button class="muscle-group-option" data-value="legs" type="button">Legs</button>
+                            <button class="muscle-group-option" data-value="full-body" type="button">Full Body</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Second block -->
-                <div class="exercise-editor-second-block">
+                <div class="second-block">
 
                     <!-- Sets amount -->
                     <label>
@@ -114,7 +118,7 @@
                         Max. reps
                         <input
                         type="number"
-                        id="min-reps"
+                        id="max-reps"
                         name="min-reps"
                         min="1"
                         max="30"
@@ -125,7 +129,7 @@
                     </label>
                 </div>
 
-                <button id="exercise-editor-save-button" type="button">Save</button>
+                <button id="save-button" class="default-button" type="button">Save</button>
             </div>
         </dialog>
 

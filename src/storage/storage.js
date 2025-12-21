@@ -1,6 +1,7 @@
 import { getDefaultPrograms } from '../data/programs.js'
 
-
+// Uncomment to reset program to defaults
+// localStorage.clear()
 function loadPrograms() {
     const savedPrograms = localStorage.getItem('programs');
     if (savedPrograms) {

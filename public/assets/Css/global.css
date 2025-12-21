@@ -9,6 +9,7 @@
 /* Colors */
 --primary-color: #0C8BE8;
 --font-color: #F6F6F6;
+--font-color-light: #f6f6f6ad;
 --bg-color: #1C1C1C;
 --card-bg: #272727;
 --error-handling-color: #bd2727;
@@ -130,12 +131,29 @@ h1 {
 	color: var(--error-handling-color) !important;
 }
 
+/* Erase browser default number spinner */
+/* Chrome, Edge, Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	appearance: none;
+  -moz-appearance: textfield;
+}
+
+
 /* Buttons */
 
 	/* Button flex container */
 	.button-flex-container {
 		display: flex;
 	}
+
+
 	/* Default button */
 
 	.default-button {
@@ -155,6 +173,8 @@ h1 {
 		text-decoration: none;
 		cursor: pointer;
 	}
+
+
 
 @media (max-width: 450px) {
 	body {

@@ -1,6 +1,6 @@
-import { openConfirmationModal } from '../ui/components/openConfirmationModal.js';
-import { renderExercises } from '../pages/exercisesPage.js';
-import { displayTopError } from '../ui/components/displayTopError.js';
+import { openConfirmationModal } from '../../ui/components/openConfirmationModal.js';
+import { renderExercises } from '../../pages/exercisesPage.js';
+import { displayTopError } from '../../ui/components/displayTopError.js';
 
 document.addEventListener('click', e => {
     const removeExerciseBtn = e.target.closest('.remove-exercise');
