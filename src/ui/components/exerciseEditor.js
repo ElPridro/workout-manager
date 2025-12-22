@@ -3,6 +3,10 @@ import { getExerciseById } from "../../utils/finders.js";
 // Exercise editor dialog (containing everything)
 const dialogEl = document.querySelector('.exercise-editor');
 
+// Dialog content
+const dialogContent = dialogEl.querySelector('.editor-content')
+
+
 // Dialog title
 const titleEl = dialogEl.querySelector('.editor-title');
 
@@ -28,9 +32,42 @@ const maxRepsInput = dialogEl.querySelector('#max-reps')
 // Save button
 const saveBtn = dialogEl.querySelector('#save-exercise-button');
 
+    // Opening muscle group selection
+    if (trigger) {
+    trigger.addEventListener('click', () => {
+        dropdown.classList.toggle('open');
+    })
+    }
+
+    // Closing dropdown when option is selected & updating tiggerValue to the selected option
+    if(options) {
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+
+            // Removes the class 'selected' from every single option
+            removeClass({nodeList: options, className: 'selected'})
+
+            // Adds the class 'selected' to the option that was clicked
+            option.classList.add('selected');
+
+            // Updates the value of the trigger to the value dataset stored in the clicked option
+            // (It still dispays the id of the mucle instead of the muscule name.. That needs to be fixed in V2)
+            value.textContent = option.dataset.value;
+
+            // Closes the dropdown the moment an option is clicked
+            dropdown.classList.remove('open');
+        })
+    })
+    }
+
 
 export function openExerciseEditor({id, type}) {
     if (!dialogEl) return;
+
+    // Removes the 'selected' class from all the options
+    if (options) {
+    removeClass({nodeList: options, className: 'selected'})
+    }
 
     if (type === 'edit') {
         titleEl.innerHTML = `Edit <span class="blue-span">Exercise</span>`
@@ -47,32 +84,24 @@ export function openExerciseEditor({id, type}) {
         minRepsInput.value = exerciseData.minReps;
         maxRepsInput.value = exerciseData.maxReps;
 
-        // Opening muscle group selection
-        trigger.addEventListener('click', () => {
-            dropdown.classList.toggle('open');
-        })
+        value.textContent = exerciseData.targetMuscle;
 
-        // Closing dropdown when option is selected
-        options.forEach(option => {
-            option.classList.remove('selected');
-            option.addEventListener('click', () => {
-                option.classList.add('selected');
-                dropdown.classList.remove('open');
-                value.textContent = option.dataset.value;
-            })
-        })
-
+        // Looping through the options array to find the option with a value matching the exerciseData.value;
+        const selectedOption = Array.from(options).find(option => option.dataset.value === exerciseData.targetMuscle)
+        
+        // If it finds it it adds the class 'selected' to it.
+        if (selectedOption) selectedOption.classList.add('selected')
+        
         // Opening modal
         dialogEl.showModal();
     }
 
 }
 
-document.addEventListener('click', e => {
-    if (!muscleGroupSelection.contains(e.target)) {
-        dropdown.classList.remove('open')
-    }
-})
+function removeClass({nodeList, className}) {
+    nodeList.forEach(element => element.classList.remove(className));
+}
+
 
 function getExerciseData(id) {
     const exercise = getExerciseById(id);
@@ -84,3 +113,16 @@ function getExerciseData(id) {
         targetMuscle: exercise.targetMuscle
     }
 }
+
+document.addEventListener('click', e => {
+
+    // Closes dialog if it detects a click from the outsides
+    if (!dialogContent.contains(e.target)) {
+        dialogEl.close();
+    }
+
+    // Closes the musclegroup selection if user clicks outside the dropdown
+    if (!muscleGroupSelection.contains(e.target)) {
+        dropdown.classList.remove('open');
+    }
+})
