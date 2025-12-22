@@ -1,4 +1,4 @@
-import { getExerciseById } from "../../utils/finders";
+import { getExerciseById } from "../../utils/finders.js";
 
 // Exercise editor dialog (containing everything)
 const dialogEl = document.querySelector('.exercise-editor');
@@ -7,35 +7,37 @@ const dialogEl = document.querySelector('.exercise-editor');
 const titleEl = dialogEl.querySelector('.editor-title');
 
 // Exercise name input
-const exerciseNameInput = dialogEl.getElementById('exercise-name');
+const exerciseNameInput = dialogEl.querySelector('#exercise-name');
 
 // Select muscle group
-const dropdown = document.querySelector('.muscle-group-select');
-const trigger = dropdown.querySelector('.muscle-group-trigger');
-const value = dropdown.querySelector('.muscle-group-value');
-const options = dropdown.querySelectorAll('.muscle-group-option');
+const muscleGroupSelection = document.querySelector('.muscle-group-select');
+const dropdown = muscleGroupSelection.querySelector('.muscle-group-dropdown')
+const trigger = muscleGroupSelection.querySelector('.muscle-group-trigger');
+const value = muscleGroupSelection.querySelector('.muscle-group-value');
+const options = muscleGroupSelection.querySelectorAll('.muscle-group-option');
 
 // Sets amount input
-const setsInput = dialogEl.getElementById('sets');
+const setsInput = dialogEl.querySelector('#sets');
 
 // Min reps amount input
-const minRepsInput = dialogEl.getElementById('min-reps');
+const minRepsInput = dialogEl.querySelector('#min-reps');
 
 // Max reps amount input
-const maxRepsInput = dialogEl.getElementById('max-reps')
+const maxRepsInput = dialogEl.querySelector('#max-reps')
 
 // Save button
-const saveBtn = dialogEl.getElementById('save-exercise-button');
+const saveBtn = dialogEl.querySelector('#save-exercise-button');
 
 
-function openExerciseEditor({id, type}) {
+export function openExerciseEditor({id, type}) {
     if (!dialogEl) return;
 
     if (type === 'edit') {
+        titleEl.innerHTML = `Edit <span class="blue-span">Exercise</span>`
         const exerciseData = getExerciseData(id);
 
         if (!exerciseData) {
-            console.error(`Unable to extract exercise data: Exercise(${id}) not found`)
+            console.error(`Unable to extract exercise data: Exercise(${id}) not found`);
             return;
         }
         
@@ -45,8 +47,32 @@ function openExerciseEditor({id, type}) {
         minRepsInput.value = exerciseData.minReps;
         maxRepsInput.value = exerciseData.maxReps;
 
+        // Opening muscle group selection
+        trigger.addEventListener('click', () => {
+            dropdown.classList.toggle('open');
+        })
+
+        // Closing dropdown when option is selected
+        options.forEach(option => {
+            option.classList.remove('selected');
+            option.addEventListener('click', () => {
+                option.classList.add('selected');
+                dropdown.classList.remove('open');
+                value.textContent = option.dataset.value;
+            })
+        })
+
+        // Opening modal
+        dialogEl.showModal();
     }
+
 }
+
+document.addEventListener('click', e => {
+    if (!muscleGroupSelection.contains(e.target)) {
+        dropdown.classList.remove('open')
+    }
+})
 
 function getExerciseData(id) {
     const exercise = getExerciseById(id);

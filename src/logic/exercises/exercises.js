@@ -2,19 +2,32 @@ import { openConfirmationModal } from '../../ui/components/openConfirmationModal
 import { renderExercises } from '../../pages/exercisesPage.js';
 import { displayTopError } from '../../ui/components/displayTopError.js';
 
+// Edit/add exercise modal 
+import { openExerciseEditor } from '../../ui/components/exerciseEditor.js';
+
 document.addEventListener('click', e => {
     const removeExerciseBtn = e.target.closest('.remove-exercise');
+    const editExerciseBtn = e.target.closest('.edit-exercise');
 
-        if (!removeExerciseBtn) return 
+        if (editExerciseBtn) {
+            const exerciseCard = editExerciseBtn.closest('.icon-card');
+            const exerciseId = exerciseCard.dataset.exerciseId;
+            openExerciseEditor({
+                id: exerciseId,
+                type: 'edit'
+            })
+        }
 
-        const exerciseCard = removeExerciseBtn.closest('.icon-card');
-        const exerciseId = exerciseCard.dataset.exerciseId;
+        if (removeExerciseBtn) {
+            const exerciseCard = removeExerciseBtn.closest('.icon-card');
+            const exerciseId = exerciseCard.dataset.exerciseId;
 
-        openConfirmationModal({
-            title: 'exercise',
-            description: 'This action will permanently delete the exercise. You will not be able to restore it.',
-            onclick: () => handleExerciseRemoval(exerciseId)
-        })
+            openConfirmationModal({
+                title: 'exercise',
+                description: 'This action will permanently delete the exercise. You will not be able to restore it.',
+                onclick: () => handleExerciseRemoval(exerciseId)
+            })
+        }
 
 })
 

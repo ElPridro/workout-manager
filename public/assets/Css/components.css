@@ -270,6 +270,10 @@
     bottom: 0;
     left: 0;
     right: 0;
+    top: auto;
+    margin: 0;
+    transform: none;
+    max-width: 100%;
     position: fixed;
     background: var(--card-bg);
     border: none;
