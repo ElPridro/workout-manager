@@ -32,6 +32,9 @@ const maxRepsInput = dialogEl.querySelector('#max-reps')
 // Save button
 const saveBtn = dialogEl.querySelector('#save-exercise-button');
 
+let newTargetMuscle = null;
+let onClickAction = null;
+
     // Opening muscle group selection
     if (trigger) {
     trigger.addEventListener('click', () => {
@@ -52,7 +55,8 @@ const saveBtn = dialogEl.querySelector('#save-exercise-button');
 
             // Updates the value of the trigger to the value dataset stored in the clicked option
             // (It still dispays the id of the mucle instead of the muscule name.. That needs to be fixed in V2)
-            value.textContent = option.dataset.value;
+            newTargetMuscle = option.dataset.value
+            value.textContent = newTargetMuscle;
 
             // Closes the dropdown the moment an option is clicked
             dropdown.classList.remove('open');
@@ -61,13 +65,15 @@ const saveBtn = dialogEl.querySelector('#save-exercise-button');
     }
 
 
-export function openExerciseEditor({id, type}) {
+export function openExerciseEditor({id, type, onClick}) {
     if (!dialogEl) return;
 
     // Removes the 'selected' class from all the options
     if (options) {
     removeClass({nodeList: options, className: 'selected'})
     }
+
+    newTargetMuscle = null;
 
     if (type === 'edit') {
         titleEl.innerHTML = `Edit <span class="blue-span">Exercise</span>`
@@ -86,8 +92,12 @@ export function openExerciseEditor({id, type}) {
 
         value.textContent = exerciseData.targetMuscle;
 
-        // Looping through the options array to find the option with a value matching the exerciseData.value;
+        // Loops through the options array to find the option with a value matching the exerciseData.value;
         const selectedOption = Array.from(options).find(option => option.dataset.value === exerciseData.targetMuscle)
+
+        if (!newTargetMuscle) {
+            newTargetMuscle = exerciseData.targetMuscle;
+        }
         
         // If it finds it it adds the class 'selected' to it.
         if (selectedOption) selectedOption.classList.add('selected')
@@ -96,6 +106,7 @@ export function openExerciseEditor({id, type}) {
         dialogEl.showModal();
     }
 
+    onClickAction = onClick;
 }
 
 function removeClass({nodeList, className}) {
@@ -114,6 +125,16 @@ function getExerciseData(id) {
     }
 }
 
+export function getNewExerciseData() {
+    return {
+        name: exerciseNameInput.value,
+        sets: setsInput.value,
+        minReps: minRepsInput.value,
+        maxReps: maxRepsInput.value,
+        targetMuscle: newTargetMuscle
+    }
+}
+
 document.addEventListener('click', e => {
 
     // Closes dialog if it detects a click from the outsides
@@ -125,4 +146,10 @@ document.addEventListener('click', e => {
     if (!muscleGroupSelection.contains(e.target)) {
         dropdown.classList.remove('open');
     }
+
+    if (e.target.classList.contains('save-exercise-button')) {
+        onClickAction();
+        dialogEl.close();
+    }
 })
+

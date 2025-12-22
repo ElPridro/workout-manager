@@ -3,7 +3,12 @@ import { renderExercises } from '../../pages/exercisesPage.js';
 import { displayTopError } from '../../ui/components/displayTopError.js';
 
 // Edit/add exercise modal 
-import { openExerciseEditor } from '../../ui/components/exerciseEditor.js';
+import { openExerciseEditor,  getNewExerciseData} from '../../ui/components/exerciseEditor.js';
+
+import { getExerciseById } from '../../utils/finders.js';
+import { programs, savePrograms } from '../../storage/storage.js';
+
+let newExerciseData = {};
 
 document.addEventListener('click', e => {
     const removeExerciseBtn = e.target.closest('.remove-exercise');
@@ -14,7 +19,11 @@ document.addEventListener('click', e => {
             const exerciseId = exerciseCard.dataset.exerciseId;
             openExerciseEditor({
                 id: exerciseId,
-                type: 'edit'
+                type: 'edit',
+                onClick: () => {
+                    newExerciseData = getNewExerciseData()
+                    editExercise(exerciseId)
+                }
             })
         }
 
@@ -70,12 +79,30 @@ function filterExercise(exercisesArray, exerciseId) {
     return exercisesArray.filter(exercise => exercise.id !== exerciseId)
 }
 
+// Updatex the program Array with the new adjusted exercise and saves to localStorge and renders UI accordingly
+function editExercise(id) {
+    const selectedExercise = getExerciseById(id);
+
+    console.log(selectedExercise.id)
+    selectedExercise.name = newExerciseData.name;
+    selectedExercise.sets = newExerciseData.sets;
+    selectedExercise.minReps = newExerciseData.minReps;
+    selectedExercise.maxReps = newExerciseData.maxReps;
+    selectedExercise.targetMuscle = newExerciseData.targetMuscle;
+
+    localStorage.setItem('programs', JSON.stringify(programs));
+    renderExercises();
+}
+
+
 // Updates the exercises in a single workout using filterExercise()
 function updateWorkout(workoutObject, exerciseId) {
+
     return {
         ...workoutObject,
         exercises: filterExercise(workoutObject.exercises, exerciseId)
     }
+
 }
 
 // Updates the entire workoutsArray with the modified workout object we get from updateWorkout();

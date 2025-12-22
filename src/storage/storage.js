@@ -17,5 +17,10 @@ function loadPrograms() {
     }
 }
 
+
+
 export const programs = loadPrograms();
 
+export function savePrograms() {
+    localStorage.setItem('programs', JSON.stringify(programs))
+}

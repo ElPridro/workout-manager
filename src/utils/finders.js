@@ -1,5 +1,6 @@
 import { muscleGroups } from "../data/muscleGroups.js";
-const programs = JSON.parse(localStorage.getItem('programs'))
+import { programs } from "../storage/storage.js"
+
 
 export function getMuscleById(id) {
     return Object.values(muscleGroups).find(g => g.id === id)
