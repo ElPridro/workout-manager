@@ -41,7 +41,8 @@
                 <h2 class="editor-title">Edit <span class="blue-span">Exercise</span></h2>
 
                 <!-- First block -->
-                <div class="first-block">
+                <div>
+                    <div class="first-block">
 
                     <!-- Exercise name -->
                     <label>
@@ -79,10 +80,13 @@
                             <button class="muscle-group-option" data-value="full-body" type="button">Full Body</button>
                         </div>
                     </div>
+                    </div>
+                    <p class="error-message exercise-name-error-message hidden">Please fill empy fields in</p>
                 </div>
 
                 <!-- Second block -->
-                <div class="second-block">
+                <div>
+                    <div class="second-block">
 
                     <!-- Sets amount -->
                     <label>
@@ -126,8 +130,9 @@
                         required
                         >
                     </label>
+                    </div>
+                    <p class="error-message second-block-error-message hidden">Min reps must be less than max reps</p>
                 </div>
-
                 <button id="save-exercise-button" class="default-button save-exercise-button" type="button">Save</button>
             </div>
         </dialog>

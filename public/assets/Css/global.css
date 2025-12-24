@@ -131,6 +131,17 @@ h1 {
 	color: var(--error-handling-color) !important;
 }
 
+.error-border {
+	border: 2px solid var(--error-handling-color) !important;
+}
+
+/* Error handling */
+.error-message {
+	color: var(--error-handling-color);
+	margin: var(--space-3) 0;
+	text-shadow: var(--text-shadow-m)
+}
+
 /* Erase browser default number spinner */
 /* Chrome, Edge, Safari */
 input[type="number"]::-webkit-inner-spin-button,

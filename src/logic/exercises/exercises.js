@@ -3,7 +3,7 @@ import { renderExercises } from '../../pages/exercisesPage.js';
 import { displayTopError } from '../../ui/components/displayTopError.js';
 
 // Edit/add exercise modal 
-import { openExerciseEditor,  getNewExerciseData} from '../../ui/components/exerciseEditor.js';
+import { openExerciseEditor,  getNewExerciseData, validateInput} from '../../ui/components/exerciseEditor.js';
 
 import { getExerciseById } from '../../utils/finders.js';
 import { programs, savePrograms } from '../../storage/storage.js';
@@ -21,8 +21,8 @@ document.addEventListener('click', e => {
                 id: exerciseId,
                 type: 'edit',
                 onClick: () => {
-                    newExerciseData = getNewExerciseData()
-                    editExercise(exerciseId)
+                        newExerciseData = getNewExerciseData()
+                        editExercise(exerciseId)
                 }
             })
         }

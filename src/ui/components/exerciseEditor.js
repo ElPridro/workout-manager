@@ -27,10 +27,11 @@ const setsInput = dialogEl.querySelector('#sets');
 const minRepsInput = dialogEl.querySelector('#min-reps');
 
 // Max reps amount input
-const maxRepsInput = dialogEl.querySelector('#max-reps')
+const maxRepsInput = dialogEl.querySelector('#max-reps');
 
-// Save button
-const saveBtn = dialogEl.querySelector('#save-exercise-button');
+// Error messages
+const exerciseNameErrorMessage = dialogEl.querySelector('.exercise-name-error-message');
+const secondBlockErrorMessage = dialogEl.querySelector('.second-block-error-message')
 
 let newTargetMuscle = null;
 let onClickAction = null;
@@ -135,6 +136,59 @@ export function getNewExerciseData() {
     }
 }
 
+export function validateInput() {
+    const inputFields = dialogEl.querySelectorAll('input')    
+    
+    inputFields ? inputFields.forEach(input => input.classList.remove('error-border')) : console.warn('One or more input elements not found');
+    exerciseNameErrorMessage.classList.add('hidden');
+    secondBlockErrorMessage.classList.add('hidden');
+
+    let hasError = false;
+
+    inputFields.forEach(input => {
+        if (input.value.trim() === '') {
+            input.classList.add('error-border');
+            hasError = true;
+    }})
+
+    if (exerciseNameInput.value.trim() === '') {
+        exerciseNameErrorMessage.textContent = 'Exercise name is required';
+        exerciseNameErrorMessage.classList.remove('hidden')
+    } 
+
+    if (setsInput.value.trim() === ''|| minRepsInput.value.trim() === '' || maxRepsInput.value.trim() === '') {
+        secondBlockErrorMessage.textContent = 'Sets and rep ranges are required'
+        secondBlockErrorMessage.classList.remove('hidden');
+    }
+
+
+    // Numbers validation
+    const minRepsValue = Number(minRepsInput.value.trim());
+    const maxRepsValue = Number(maxRepsInput.value.trim());
+
+    if (minRepsValue > maxRepsValue) {
+        minRepsInput.classList.add('error-border');
+        maxRepsInput.classList.add('error-border');
+        secondBlockErrorMessage.textContent = 'Min. reps cannot be higher than max. reps';
+        secondBlockErrorMessage.classList.remove('hidden');
+        hasError = true;
+    }
+
+    const setsRepsInput = [minRepsInput, maxRepsInput, sets]
+
+    setsRepsInput.forEach(input => {
+        if (Number(input.value.trim()) <= 0 || Number(input.value.trim()) >= 30) {
+            input.classList.add('error-border');
+            secondBlockErrorMessage.textContent = 'Values must be between 1 and 30';
+            secondBlockErrorMessage.classList.remove('hidden');
+            hasError = true;
+        }
+    })
+
+    return !hasError;
+    
+}
+
 document.addEventListener('click', e => {
 
     // Closes dialog if it detects a click from the outsides
@@ -148,8 +202,10 @@ document.addEventListener('click', e => {
     }
 
     if (e.target.classList.contains('save-exercise-button')) {
-        onClickAction();
-        dialogEl.close();
+        if (validateInput()) {
+            onClickAction();
+            dialogEl.close();
+        }
     }
 })
 
