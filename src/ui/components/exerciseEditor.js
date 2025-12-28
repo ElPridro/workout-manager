@@ -67,17 +67,31 @@ let onClickAction = null;
 
 
 export function openExerciseEditor({id, type, onClick}) {
+
     if (!dialogEl) return;
 
     // Removes the 'selected' class from all the options
     if (options) {
-    removeClass({nodeList: options, className: 'selected'})
+        removeClass({nodeList: options, className: 'selected'})
     }
+
+    clearEditorErrors();
 
     newTargetMuscle = null;
 
     if (type === 'edit') {
-        titleEl.innerHTML = `Edit <span class="blue-span">Exercise</span>`
+        showEditModal(id)
+    } 
+    
+    else if (type === 'create') {
+        showCreateModal(id)
+    }
+
+    onClickAction = onClick;
+}
+
+function showEditModal(id) {
+    titleEl.innerHTML = `Edit <span class="blue-span">Exercise</span>`
         const exerciseData = getExerciseData(id);
 
         if (!exerciseData) {
@@ -105,9 +119,18 @@ export function openExerciseEditor({id, type, onClick}) {
         
         // Opening modal
         dialogEl.showModal();
-    }
+}
 
-    onClickAction = onClick;
+function showCreateModal(id) {
+    clearFields();
+
+}
+
+function clearFields() {
+        exerciseNameInput ? exerciseNameInput.value = '' : console.warn('input could not be cleared: ExerciseNameInput not found')
+        if (setsInput) setsInput.value = '';
+        if (minRepsInput) minRepsInput.value = '';
+        if (maxRepsInput) maxRepsInput.value = '';
 }
 
 function removeClass({nodeList, className}) {
@@ -139,9 +162,7 @@ export function getNewExerciseData() {
 export function validateInput() {
     const inputFields = dialogEl.querySelectorAll('input')    
     
-    inputFields ? inputFields.forEach(input => input.classList.remove('error-border')) : console.warn('One or more input elements not found');
-    exerciseNameErrorMessage.classList.add('hidden');
-    secondBlockErrorMessage.classList.add('hidden');
+    clearEditorErrors()
 
     let hasError = false;
 
@@ -182,11 +203,19 @@ export function validateInput() {
             secondBlockErrorMessage.textContent = 'Values must be between 1 and 30';
             secondBlockErrorMessage.classList.remove('hidden');
             hasError = true;
-        }
+        }   
     })
 
     return !hasError;
     
+}
+
+function clearEditorErrors() {
+    const inputFields = dialogEl.querySelectorAll('input')    
+    
+    inputFields ? inputFields.forEach(input => input.classList.remove('error-border')) : console.warn('One or more input elements not found');
+    exerciseNameErrorMessage.classList.add('hidden');
+    secondBlockErrorMessage.classList.add('hidden');
 }
 
 document.addEventListener('click', e => {
