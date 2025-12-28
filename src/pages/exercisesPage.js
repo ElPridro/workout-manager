@@ -87,7 +87,10 @@ export function renderExercises() {
 
     // Render back button
     document.querySelector('.back-to-workout')
-    .innerHTML = `<a href="${document.referrer}" class="default-button">Back to workouts</a>`
+        .innerHTML = `
+                    <button class="default-button add-exercise">Add new exercise</button>
+                    <a href="${document.referrer}" class="default-button">Back to workouts</a>
+                      `
 }
 
 

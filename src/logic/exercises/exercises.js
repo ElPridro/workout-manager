@@ -13,30 +13,39 @@ let newExerciseData = {};
 document.addEventListener('click', e => {
     const removeExerciseBtn = e.target.closest('.remove-exercise');
     const editExerciseBtn = e.target.closest('.edit-exercise');
+    const addExerciseBtn = e.target.closest('.add-exercise');
 
-        if (editExerciseBtn) {
-            const exerciseCard = editExerciseBtn.closest('.icon-card');
-            const exerciseId = exerciseCard.dataset.exerciseId;
-            openExerciseEditor({
-                id: exerciseId,
-                type: 'edit',
-                onClick: () => {
-                        newExerciseData = getNewExerciseData()
-                        editExercise(exerciseId)
-                }
-            })
-        }
+    if (editExerciseBtn) {
+        const exerciseCard = editExerciseBtn.closest('.icon-card');
+        const exerciseId = exerciseCard.dataset.exerciseId;
+        openExerciseEditor({
+            id: exerciseId,
+            type: 'edit',
+            onClick: () => {
+                newExerciseData = getNewExerciseData()
+                editExercise(exerciseId)
+            }
+        })
+    }
 
-        if (removeExerciseBtn) {
-            const exerciseCard = removeExerciseBtn.closest('.icon-card');
-            const exerciseId = exerciseCard.dataset.exerciseId;
+    else if (removeExerciseBtn) {
+        const exerciseCard = removeExerciseBtn.closest('.icon-card');
+        const exerciseId = exerciseCard.dataset.exerciseId;
 
-            openConfirmationModal({
-                title: 'exercise',
-                description: 'This action will permanently delete the exercise. You will not be able to restore it.',
-                onclick: () => handleExerciseRemoval(exerciseId)
-            })
-        }
+        openConfirmationModal({
+            title: 'exercise',
+            description: 'This action will permanently delete the exercise. You will not be able to restore it.',
+            onclick: () => handleExerciseRemoval(exerciseId)
+        })
+    }
+    
+    else if (addExerciseBtn) { 
+        openExerciseEditor({
+            id: '',
+            type: 'create',
+            onClick: () => { console.log('add exercise editor opened')}
+        })
+    }
 
 })
 

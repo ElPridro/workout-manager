@@ -20,6 +20,8 @@ const trigger = muscleGroupSelection.querySelector('.muscle-group-trigger');
 const value = muscleGroupSelection.querySelector('.muscle-group-value');
 const options = muscleGroupSelection.querySelectorAll('.muscle-group-option');
 
+console.log(trigger)
+
 // Sets amount input
 const setsInput = dialogEl.querySelector('#sets');
 
@@ -30,7 +32,7 @@ const minRepsInput = dialogEl.querySelector('#min-reps');
 const maxRepsInput = dialogEl.querySelector('#max-reps');
 
 // Error messages
-const exerciseNameErrorMessage = dialogEl.querySelector('.exercise-name-error-message');
+const firstBlockErrorMessage = dialogEl.querySelector('.exercise-name-error-message');
 const secondBlockErrorMessage = dialogEl.querySelector('.second-block-error-message')
 
 let newTargetMuscle = null;
@@ -124,13 +126,27 @@ function showEditModal(id) {
 function showCreateModal(id) {
     clearFields();
 
+    titleEl.innerHTML = `Create <span class="blue-span">Exercise</span>`
+
+
+    dialogEl.showModal();
 }
 
 function clearFields() {
-        exerciseNameInput ? exerciseNameInput.value = '' : console.warn('input could not be cleared: ExerciseNameInput not found')
-        if (setsInput) setsInput.value = '';
-        if (minRepsInput) minRepsInput.value = '';
-        if (maxRepsInput) maxRepsInput.value = '';
+
+    const fields = [exerciseNameInput, setsInput, minRepsInput, maxRepsInput];
+    fields.forEach(field => { 
+        field.value === '';
+    })
+    
+    // Finds the default option
+    const selectMuscleOption = Array.from(options).find(option => option.dataset.value = 'select');
+
+    // Adds the class selected to it for visual feedback
+    selectMuscleOption.classList.add('selected');
+
+    // Sets the value of the input to select
+    value.textContent = selectMuscleOption.dataset.value;
 }
 
 function removeClass({nodeList, className}) {
@@ -173,8 +189,8 @@ export function validateInput() {
     }})
 
     if (exerciseNameInput.value.trim() === '') {
-        exerciseNameErrorMessage.textContent = 'Exercise name is required';
-        exerciseNameErrorMessage.classList.remove('hidden')
+        firstBlockErrorMessage.textContent = 'Exercise name is required';
+        firstBlockErrorMessage.classList.remove('hidden')
     } 
 
     if (setsInput.value.trim() === ''|| minRepsInput.value.trim() === '' || maxRepsInput.value.trim() === '') {
@@ -182,6 +198,13 @@ export function validateInput() {
         secondBlockErrorMessage.classList.remove('hidden');
     }
 
+    // Target muscle selection validation
+    if (value.textContent === 'select') { 
+        firstBlockErrorMessage.textContent = 'Target muscle is required';
+        firstBlockErrorMessage.classList.remove('hidden');
+        trigger.classList.add('error-border')
+        hasError = true;
+    }
 
     // Numbers validation
     const minRepsValue = Number(minRepsInput.value.trim());
@@ -214,7 +237,7 @@ function clearEditorErrors() {
     const inputFields = dialogEl.querySelectorAll('input')    
     
     inputFields ? inputFields.forEach(input => input.classList.remove('error-border')) : console.warn('One or more input elements not found');
-    exerciseNameErrorMessage.classList.add('hidden');
+    firstBlockErrorMessage.classList.add('hidden');
     secondBlockErrorMessage.classList.add('hidden');
 }
 

@@ -162,6 +162,8 @@ input[type="number"] {
 	/* Button flex container */
 	.button-flex-container {
 		display: flex;
+		flex-direction: column;
+		gap: var(--space-3)
 	}
 
 
