@@ -86,7 +86,7 @@ export function openExerciseEditor({id, type, onClick}) {
     } 
     
     else if (type === 'create') {
-        showCreateModal(id)
+        showCreateModal()
     }
 
     onClickAction = onClick;
@@ -123,7 +123,7 @@ function showEditModal(id) {
         dialogEl.showModal();
 }
 
-function showCreateModal(id) {
+function showCreateModal() {
     clearFields();
 
     titleEl.innerHTML = `Create <span class="blue-span">Exercise</span>`
