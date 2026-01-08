@@ -5,7 +5,7 @@ import { displayTopError } from '../../ui/components/displayTopError.js';
 // Edit/add exercise modal 
 import { openExerciseEditor,  getNewExerciseData} from '../../ui/components/exerciseEditor.js';
 
-import { getExerciseById } from '../../utils/finders.js';
+import { getExerciseById, getWorkoutById } from '../../utils/finders.js';
 import { programs, savePrograms } from '../../storage/storage.js';
 
 let newExerciseData = {};
@@ -39,11 +39,14 @@ document.addEventListener('click', e => {
         })
     }
     
-    else if (addExerciseBtn) { 
+    else if (addExerciseBtn) {
         openExerciseEditor({
             id: '',
             type: 'create',
-            onClick: () => { console.log('add exercise editor opened')}
+            onClick: () => { 
+                newExerciseData = getNewExerciseData();
+                renderProgramsWithExerciseAddition(getWorkoutId())
+            }
         })
     }
 
@@ -55,24 +58,6 @@ function getWorkoutId() {
     return params.has('id') ? params.get('id') : null
 }
 
-console.log(getWorkoutId())
-
-function handleExerciseRemoval(id) {
-    const parentWorkout = getWorkoutByExerciseId(id);
-
-    if (!parentWorkout) {
-        console.log(`invariant violation: workout not found for exercise ${id}`);
-        return
-    }
-
-    const isLastWorkout = parentWorkout.exercises.length < 2
-    if (isLastWorkout) {
-        displayTopError('At least one exercise is required.')
-        return
-    }
-
-    removeExercise(id)
-}
 
 function getWorkoutByExerciseId(id) {
     const programs = JSON.parse(localStorage.getItem('programs'))
@@ -90,11 +75,67 @@ function getWorkoutByExerciseId(id) {
 
 }
 
+/////////////////////////
+/// EXERCISE ADDITION ///
+/////////////////////////
 
-// filters an exercise element from the exercises array
-function filterExercise(exercisesArray, exerciseId) {
-    return exercisesArray.filter(exercise => exercise.id !== exerciseId)
+function updateExercisesWithNewExercise(exerciseArr) { 
+    const newExercise = newExerciseData;
+
+    if (!newExercise) { 
+        console.warn('Error: new exercise data was not found')
+        return exerciseArr
+    }
+
+    return [
+        newExercise,
+        ...exerciseArr
+    ]
+
+} 
+
+// We first need to identify the parent workout. We already can do that by GetWorkoutById() and we pass in the Id we get from  getWorkoutId
+function updateWorkoutWithExerciseAddition(workoutObj, id) { 
+
+    if (workoutObj.id !== id) {
+        return workoutObj
+    } else {
+        return {
+            ...workoutObj,
+            exercises: updateExercisesWithNewExercise(workoutObj.exercises)
+        }
+    }
 }
+
+function UpdateWorkoutsArrWithNewWorkout(workoutArr, id) {
+    return workoutArr.map(workout => { 
+        return updateWorkoutWithExerciseAddition(workout, id);
+    })
+}
+
+function updateProgramWithNewWorkouts(programObj, id) { 
+    return {
+        ...programObj,
+        workouts: UpdateWorkoutsArrWithNewWorkout(programObj.workouts, id)
+    }
+}
+
+function updateProgramsArrWithNewProgram(programsArr, id) { 
+    return programsArr.map(program => updateProgramWithNewWorkouts(program, id))
+}
+
+function renderProgramsWithExerciseAddition(id) { 
+    const programs = JSON.parse(localStorage.getItem('programs'));
+
+    if (!programs) return;
+
+    localStorage.setItem('programs', JSON.stringify(updateProgramsArrWithNewProgram(programs, id)));
+    renderExercises();
+}
+
+////////////////////////
+/// EXERCISE EDITING ///
+////////////////////////
 
 // Updatex the program Array with the new adjusted exercise and saves to localStorge and renders UI accordingly
 function editExercise(id) {
@@ -111,6 +152,32 @@ function editExercise(id) {
     renderExercises();
 }
 
+
+////////////////////////
+/// EXERCISE REMOVAL ///
+////////////////////////
+
+function handleExerciseRemoval(id) {
+    const parentWorkout = getWorkoutByExerciseId(id);
+
+    if (!parentWorkout) {
+        console.error(`invariant violation: workout not found for exercise ${id}`);
+        return
+    }
+
+    const isLastWorkout = parentWorkout.exercises.length < 2
+    if (isLastWorkout) {
+        displayTopError('At least one exercise is required.')
+        return
+    }
+
+    removeExercise(id)
+}
+
+// filters an exercise element from the exercises array
+function filterExercise(exercisesArray, exerciseId) {
+    return exercisesArray.filter(exercise => exercise.id !== exerciseId)
+}
 
 // Updates the exercises in a single workout using filterExercise()
 function updateWorkout(workoutObject, exerciseId) {

@@ -12,3 +12,7 @@ export function getExerciseById(id) {
     .find(exercise => exercise.id === id);
 }
 
+export function getWorkoutById(id) { 
+    return programs.flatMap(program => program.workouts)
+    .find(workout => workout.id === id)
+}
